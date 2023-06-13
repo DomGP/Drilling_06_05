@@ -1,18 +1,30 @@
-<template>
+<template class="fondo-style">
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Presentacion :showCard="showCard" @toggleCard="toggleCard" />
+    <Api v-if="showCard" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Presentacion from './components/Presentacion.vue'
+import Api from './components/Api.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Api,
+    Presentacion
+  },
+  data() {
+    return {
+      showCard: false,
+    };
+  },
+  methods: {
+    toggleCard() {
+      this.showCard = !this.showCard;
+    },
+  },
 }
 </script>
 
